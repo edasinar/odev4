@@ -11,7 +11,12 @@ class Quadrilateral
 public:
 	constexpr static int NUMBER_OF_CORNERS { 4 };
 	enum class Color {RED, BLUE, WHITE, BLACK, GREEN};
-	static const map<Quadrilateral::Color, string> colorToStringMap;
+	const map<Quadrilateral::Color, string> colorToStringMap = { {Quadrilateral::Color::BLACK,"black"},
+	{Quadrilateral::Color::BLUE,"blue"},
+	{Quadrilateral::Color::GREEN,"green"},
+	{Quadrilateral::Color::RED,"red"},
+	{Quadrilateral::Color::WHITE,"white"}
+	};
 
 	// Constructors
 
@@ -38,6 +43,7 @@ public:
 	Point getD() const noexcept; 
 
 	// Dörtgenin rengini string olarak dönderir
+	// deðiþiklik deneme 
 	Color getColor() const noexcept;
 	string getColorAsString() const noexcept; 
 

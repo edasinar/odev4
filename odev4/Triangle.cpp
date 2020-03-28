@@ -2,6 +2,7 @@
 #include <iostream>
 #include <exception>
 #include <stdexcept>
+#include <cmath>
 
 Triangle::Triangle(const Point& a, const Point& b, const Point& c, const Color& color)
 {
@@ -72,6 +73,11 @@ Triangle::Color Triangle::getColor() const noexcept
 	return color;
 }
 
+string Triangle::getColorAsString() const noexcept
+{
+	return colorTostringMap.at(color);
+}
+
 double Triangle::getPerimeter() const noexcept
 {
 	double k, l, m;
@@ -113,10 +119,29 @@ bool Triangle::setC(const Point& pt)
 
 bool Triangle::isValid() const
 {
-	if ((a.x == b.x) == c.x || (a.y == b.y) == c.y)
-	{
+	double x = a.distanceTo(b);
+	double y = b.distanceTo(c);
+	double z = c.distanceTo(a);
+	if (x > (y + z) || x < abs(y - z))
 		throw invalid_argument("ucgen degildir.");
-	}
+
+	if (y > (x + z) || y < abs(x - z))
+		throw invalid_argument("ucgen degildir.");
+
+	if (z > (x + y) || z < abs(x - y))
+		throw invalid_argument("ucgen degildir.");
+
+	if ((a.x == b.x) == c.x || (a.y == b.y) == c.y)
+		throw invalid_argument("ucgen degildir.");
+
+	double egim= (b.y - a.y) / (b.x - a.x);
+	Point_st denklem;
+	denklem.y = c.y;
+	denklem.x = (denklem.y - a.y) / egim + a.x;
+	if (c.x == denklem.x)
+		throw invalid_argument("ucgen degildir.");
+
+
 
 	return false;
 }

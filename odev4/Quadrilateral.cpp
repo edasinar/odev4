@@ -115,9 +115,7 @@ Quadrilateral::Color Quadrilateral::getColor() const noexcept
 
 string Quadrilateral::getColorAsString() const noexcept
 {
-
-
-	return string();
+	return colorToStringMap.at(color);
 }
 
 double Quadrilateral::getPerimeter() const noexcept

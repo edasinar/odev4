@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <random>
 #include "Triangle.h"
 #include "Quadrilateral.h"
 
@@ -9,7 +10,7 @@ using namespace std;
 /* Triangle nesnelerinde yer alacak noktalarýn x ve y deðerleri [0, 100] arasýnda olabilir.
    Þeklin renk deðeri de rastgele olarak belirlenmelidir.
 */
-void fillTriangles(vector<Triangle> &v, int numberOfItems = 100)
+void fillTriangles(vector<Triangle>& v, int numberOfItems = 100)
 {
 
 }
